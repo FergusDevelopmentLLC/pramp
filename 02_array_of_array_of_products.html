@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <script>
+    
+      function arrayOfArrayProducts(arr) {
+      
+        return arr.reduce((acc, current, i) => {
+          
+          const product = arr.filter((el, j) => {
+            if(j !== i) return el
+          }).reduce((a, b) => {
+            return a * b
+          }, 1)
+
+          acc.push(product)
+
+          return acc
+        }, [])
+      }
+      
+      console.log(arrayOfArrayProducts([1,2,3,4]))
+
+    </script>
+  </body>
+</html>
+
+
+
+
+<!-- function arrayOfArrayProducts(arr) {
+  let result = []
+  
+  for (let i = 0; i < arr.length; i++) {
+    let product = 1 
+    
+    for(let j = 0; j < arr.length; j++) {
+      if(i === j) continue;
+      else {
+        product = product * arr[j]
+      }
+    }
+    result.push(product)
+  }
+} -->
+
+
+
+<!-- let result = []
+  
+  for (let i = 0; i < arr.length; i++) {
+    let product = 1 
+    
+    for(let j = 0; j < arr.length; j++) {
+      if(i === j) continue;
+      else {
+        product = product * arr[j]
+      }
+    }
+    result.push(product)
+  } -->
+
+<!-- arrayOfArrayProducts([2,3,4,5])
+
+                     [60,30,40,120]
+
+                    let fromLeft = [1, 2 , 6, 24]
+                    let fromRight= [120,60,20, 5, 1]
+
+
+                    arrayOfArrayProducts([2,3,4,5])
+
+                     [60,40,30,120]
+
+                    let fromLeft = [1, 2 , 6, 24]
+                    let fromRight= [60,20, 5, 1] -->
