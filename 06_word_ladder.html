@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+  const ladderLength = (beginWord, endWordWord, wordArray) => {
+    
+    const validNextWords = (currentWord, wordArray) => {
+    
+      if(!currentWord) return null
+      if(wordArray.length === 0) return null
+
+      let currentWordArray = currentWord.split('')
+      let returnWords = []
+      
+      wordArray.forEach((word, i) => {
+        
+        let matchedLetters = []
+        currentWordArray.forEach((letter, i) => {
+          if(word.indexOf(letter) > -1) {
+            matchedLetters.push(letter)
+          }
+        })
+        
+        if(matchedLetters.length === currentWord.split('').length - 1)
+          returnWords.push(word)
+        
+      })
+      
+      return returnWords
+    }
+
+    const buildPath = (traversalTree, endWordWord) => {
+
+      let path = [endWordWord]
+      let parent = traversalTree[endWordWord]
+      
+      while (parent) {
+        path.push(parent)
+        parent = traversalTree[parent]
+      }
+    
+      return path.reverse()
+    }
+
+    const bfs = (beginWord, endWordWord, wordList) => {
+
+      let traversalTree = {}
+      let visited = new Set
+      let queue = []
+      queue.push(beginWord)
+      wordList.push(endWordWord)
+
+      while (queue.length) {
+
+        let wordToTest = queue.shift()//take the first one off of queue array
+        
+        visited.add(wordToTest)//add this square to visited array, this keeps track of squares visited
+        
+        if (wordToTest === endWordWord) return buildPath(traversalTree, endWordWord)//if the wordToTest === endWordWord, return the build path
+
+        for (child of validNextWords(wordToTest, wordList)) {
+          if (!visited.has(child)){
+            traversalTree[child] = wordToTest
+            queue.push(child)
+          }
+        }
+      }
+    }
+
+    
+    let path = bfs(beginWord, endWordWord, wordArray)
+    return path ? path.length - 1 : 0
+
+  }
+
+  // let beginWord = "hit", endWord = "lot", wordList = ["hot","dot","dog","lot","log"]
+  // console.log(ladderLength(beginWord, endWord, wordList))
+
+  
+  function ladderLength(beginWord, endWord, wordArray) {
+    
+    const nextChar = (c) => String.fromCharCode(c.charCodeAt(0) + 1)
+
+    if (wordArray.length == 0) return 0
+
+    wordArray.push(endWord)
+
+    const queue = [beginWord]
+    const distanceQueue = [1]
+
+    while (queue.length > 0) {
+        
+      const wordToTest = queue.shift()
+      const currentDistance = distanceQueue.shift()
+
+      if (wordToTest === endWord) return currentDistance
+
+      for (let i = 0; i < wordToTest.length; i++) {
+
+        let wordToTestArray = wordToTest.split('')
+
+        //loop through letters a-z
+        for (let character = 'a'; character <= 'z'; character = nextChar(character)) {
+          
+          //replace one letter in wordToTest
+          wordToTestArray[i] = character
+
+          possibleNewWord = wordToTestArray.join('')//join array back to word
+
+          if (wordArray.indexOf(possibleNewWord) > -1) {//wordArray contains the possibleNewWord
+
+            queue.push(possibleNewWord)//add it to the queue
+            distanceQueue.push(currentDistance + 1)//increment currentDistance
+
+            //if wordArray contains the new word, remove it
+            wordArray.splice(wordArray.indexOf(possibleNewWord), 1)
+          }
+        }
+      }
+    }
+
+    return 0
+  }
+
+  let beginWord = "hit", endWordWord = "cog", wordList = ["hot","dot","dog","lot","log"]
+  console.log(ladderLength(beginWord, endWordWord, wordList))
+  
+  </script>
+  
+</body>
+</html>
