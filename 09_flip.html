@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+  </head>
+  <body>
+    <script>
+      
+      // xyxyyy
+      // loop through string
+      // if the character is x, continue
+      // if the character is y
+      //   check to see if there is an x in the remaining characters
+      //   if so, flip the y, count it
+      // iteration 1: x (continue)
+      // iteration 2: y (does x appear in 'xyyy'? yes. so, flip this y. count it.)
+      // iteration 3: x (continue)
+      // iteration 4: y (does x appear in 'yyy'? no. don't flip this y)
+
+      // xyxyyx
+      // iteration 1: x (continue)
+      // iteration 2: y (does x appear in 'xyyx'? yes. so, flip this y. count it.)
+      // iteration 3: x (continue)
+      // iteration 4: y (does x appear in 'yx'? yes, so flip this y. count it.)
+      // iteration 4: y (does x appear in 'x'? yes, so flip this y. count it.)
+
+      const numberOfFlips = (str) => {
+
+        const getLetterCountIn = (array, letterToCheck) => {
+          return array.reduce((acc, letter) => {
+            if(letter === letterToCheck) acc++
+            return acc
+          }, 0)
+        }
+
+        const strArray = str.split('')
+        const candidateArray = []
+        
+        const xCount = getLetterCountIn(strArray, 'x')//how many flips if we just change all x to y?
+        candidateArray.push(xCount)
+
+        const yCount = getLetterCountIn(strArray, 'y')//how many flips if we just change all y to x?
+        candidateArray.push(yCount)
+
+        const flipCount = strArray.reduce((acc, letter, i) => {
+          if(letter !== 'x') {//if the character is y
+            let remainingCharacters = strArray.slice(i + 1)//get the remaining characters
+            if(remainingCharacters.indexOf('x') > -1) acc++//if x appears in remaining characters, this is a flip, count it.
+          }
+          return acc
+        }, 0)
+        candidateArray.push(flipCount)
+
+        return Math.min(...candidateArray) //return the minimum value from candidates
+      }
+
+      let testMe = 'xyxyxyxyy'
+      testMe = 'xxxyx'
+      testMe = 'xxxxyyyyy'
+      testMe = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxy'
+      testMe = 'yxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxyxxxxxxxxxxxxxx'
+
+      console.log(numberOfFlips(testMe))
+      
+    </script>
+  </body>
+</html>
