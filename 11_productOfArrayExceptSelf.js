@@ -20,7 +20,6 @@ const productExceptSelf = (nums) =>  {
   
   right[nums.length - 1] = 1
   for (let i = nums.length - 2; i >= 0; i--) {
-    console.log(nums[i + 1])
     right[i] = nums[i + 1] * right[i + 1];
   }
   //console.log('right', right)
