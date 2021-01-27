@@ -3,7 +3,7 @@ const generateParenthesis = (count) => {
   
   const findAllCombinationsFor = (string) => {
   
-    if (!!string.length && string.length < 2 ) {
+    if (!!string.length && string.length < 3 ) {
       return [string]
     }
   
@@ -54,7 +54,7 @@ const generateParenthesis = (count) => {
   //get all the combinations of this string
   const candidates = findAllCombinationsFor(stringToTest)
 
-  //run each one through canReduce, if valid, 
+  //run each one through canReduce, if valid, add it to theseReduce
   const theseReduce = []
   candidates.forEach((candidate) => {
     if(canReduce(candidate)) {
@@ -63,7 +63,6 @@ const generateParenthesis = (count) => {
   })
 
   return theseReduce
-
 }
 
 console.log(generateParenthesis(1)) 
