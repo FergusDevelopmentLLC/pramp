@@ -65,7 +65,6 @@ const ladderLength = (beginWord, endWordWord, wordArray) => {
     }
   }
 
-  
   let path = bfs(beginWord, endWordWord, wordArray)
   return path ? path.length - 1 : 0
 

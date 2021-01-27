@@ -61,7 +61,9 @@ function shortestCellPath(grid, sr, sc, tr, tc) {
       //visited Set(2) {"0,0", "1,0"}
       //visited Set(3) {"0,0", "1,0", "0,1"}
       
-      if (squareToTest.toString() === to.toString()) return buildPath(traversalTree, to)//if the squareToTest === to square, return the build path
+      if (squareToTest.toString() === to.toString()) {
+        return buildPath(traversalTree, to)//if the squareToTest === to square, return the build path
+      }
 
       for (child of validRoutes(squareToTest, grid)) {
         if (!visited.has(child.toString())){
@@ -96,3 +98,4 @@ console.log(shortestCellPath(grid, 0, 0, 2, 0))
 // https://tutorialspoint.dev/data-structure/matrix-archives/shortest-distance-two-cells-matrix-grid
 // https://www.geeksforgeeks.org/shortest-distance-two-cells-matrix-grid/
 // https://leetcode.com/explore/learn/card/recursion-ii/472/backtracking/2654/
+// https://medium.com/swlh/backtracking-algorithm-to-solve-sudoku-puzzle-in-javascript-732aedcf5e2 
