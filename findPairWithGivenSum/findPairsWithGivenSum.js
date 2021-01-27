@@ -37,7 +37,6 @@ function twoSum(nums, target_num) {
   target_num = target_num - 30
 
   let myMap = {}
-  
   for (let i=0; i<nums.length; i++){
     if (myMap[nums[i]]){
       myMap[nums[i]].push(i)
