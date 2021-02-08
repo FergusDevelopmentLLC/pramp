@@ -12,11 +12,11 @@ const mergeSort = (left, right) => {
     }
   }
   
-  // Concatenating the leftover elements
-  // (in case we didn't go through the entire left or right array)
+  // Concatenating the leftover elements in case we didn't go through the entire left or right array
   return [ ...sortedArray, ...left, ...right ]
 }
 
+//the arrays must be sorted themselves.
 let left = [1, 2, 3, 4, 7, 6]
 let right = [0, 2, 2, 3]
 console.log(mergeSort(left, right))
