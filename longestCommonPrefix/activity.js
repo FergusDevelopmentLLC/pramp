@@ -1,20 +1,26 @@
 let activity = [
-[1, '@login', 'None'],
+[1, '@login', null],
 [5, '@startVideo', 'Bob'],
 [20, '@startVideo', 'Thomas'],
 [66, '@stopVideo', 'Thomas'],
 [70, '@startVideo', 'Lily'],
 [75, '@stopVideo', 'Bob'],
 [78, '@stopVideo', 'Lily'],
-[100, '@logout', 'None'],
-[150, '@login', 'None'],
+[100, '@logout', null],
+[150, '@login', null],
 [160, '@startVideo', 'Thomas'],
 [205, '@stopVideo', 'Thomas'],
-[210, '@logout', 'None'] ]
+[210, '@logout', null] ]
 
 let starts = []
 let ends = []
 let spans = []
+
+
+for (let i=0; i < activity.length; i++){
+  const admin = {}
+  
+}
 
 for (let i=0; i < activity.length; i++){
 
