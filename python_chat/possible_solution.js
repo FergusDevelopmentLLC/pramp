@@ -15,7 +15,9 @@ const activities = [
 
 let chatEvents = []
 
-// we want a structure like this, an array of objects recording necessary information at each time stamp.
+// we want an array of objects like this for chatEvents, each object records necessary information at each time stamp.
+// see full array of chatEvents at the bottom
+
 //[
 //   {
 //     timestamp: 1,
@@ -39,11 +41,11 @@ let clientsLoggedIn = []
 //build the array of chatEvents with this loop.
 activities.forEach((activity) => {
   
-  if(activity[1] == "@login") {
+  if(activity[1] === "@login") {
     haLoggedIn = true
   }
 
-  if(activity[1] == "@logout") {
+  if(activity[1] === "@logout") {
     haLoggedIn = false
   }
 
