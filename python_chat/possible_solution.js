@@ -68,7 +68,7 @@ activities.forEach((activity) => {
 
   chatEvents.push(chatEvent)
 })
-//console.log('chatEvents', chatEvents)
+console.log('chatEvents', chatEvents)
 
 //part A
 const logins = []
