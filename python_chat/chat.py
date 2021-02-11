@@ -40,3 +40,6 @@ activity = [(1, '@login', None),
 # are valid. Please be sure that your solution code outputs BOTH (A) and (B).
 
 # YOUR SOLUTION PYTHON CODE HERE
+
+
+
