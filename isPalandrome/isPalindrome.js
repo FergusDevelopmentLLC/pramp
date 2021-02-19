@@ -37,6 +37,26 @@ var isPalindrome = (x) => {
 
 }
 
+function isPalindromeNoStr(num) {
+  let reversedInt = 0
+  let num1 = num
+  while (num1 > 0) {
+    let lastDigit = num1 % 10
+    reversedInt = reversedInt * 10 + lastDigit
+    num1 = Math.floor(num1 / 10)
+  }
+  return reversedInt === num
+}
+
+
+
+function isPalindrome(num) {
+  const reverse = num.toString().split('').reverse().join('')
+  //   let's not use loose equal
+  return num === Number(reverse)
+}
+
+
 let x = 121
 x = 123
 x = 10
