@@ -1,0 +1,55 @@
+trace
+7, 0, 2, 1, 9, 2
+lowIndex = 0
+highIndex = 5
+pivot = 0
+
+0 is less than 5
+  7 is not less than 2
+  0 is less than 2
+    i = 1
+    pivot = 0
+    swap([7, 0, 2, 1, 9, 2], 1, 0)  
+    (swap 0 and 7)
+    target is now: [0, 7, 2, 1, 9, 2]
+    
+    i = 2
+    pivot = 1
+    2 equals 2
+
+    i = 3
+    pivot = 1
+    1 is less than 7
+      swap([0, 7, 2, 1, 9, 2], 3, 1)
+      target: [0, 1, 2, 7, 9, 2]
+
+    i = 4
+    pivot = 2
+    9 is greater than 2
+
+    i = 5
+    pivot = 2
+    line 22: swap([0, 1, 2, 7, 9, 2], 5, 2)
+    target: [0, 1, 2, 7, 9, 2]
+    
+    i = 5
+    pivot = 2
+    line 22: swap([0, 1, 2, 7, 9, 2], 5, 3)
+    pivot = 3
+    target: [0, 1, 2, 7, 9, 2]
+
+    line 24: quickSort([0, 1, 2, 7, 9, 2], 0, 2)
+    0 is less than 2
+      0 is less than 2
+        swap([0, 1, 2, 7, 9, 2], 5, 2)
+        target: [0, 1, 2, 7, 9, 2]
+        pivot = 4
+        i = 6
+        6 > 5 (line 13)
+        
+    line 25: quickSort([0, 1, 2, 7, 9, 2], 5, 4)
+    0 is less than 4
+      0 is less than 9
+        swap([0, 1, 2, 7, 9, 2], 5, 5)
+        
+

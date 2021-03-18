@@ -1,35 +1,46 @@
-const swapAtIndexes = (targetArray, i, j) => {
-  let temp = targetArray[i]
-  targetArray[i] = targetArray[j]
-  targetArray[j] = temp
-}
+const quickSort = (targetArray, low, high) => {
 
-const partition = (arr, low, high) => {
-  let q = low, i
-  
-  for (i = low; i < high; i++) {
-    if (arr[i] < arr[high]) {
-      swapAtIndexes(arr, i, q)
-      q++
-    }
+  const swap = (targetArray, i, pivot) => {
+    let temp = targetArray[i]
+    targetArray[i] = targetArray[pivot]
+    targetArray[pivot] = temp
+    console.log('targetArray', targetArray)
   }
 
-  swapAtIndexes(arr, i, q)
-  return q
-}
-
-const quickSort = (arr, low, high) => {
+  let pivot = low
+  let i = low
+  
   if (low < high) {
-    let pivot = partition(arr, low, high)
-    quickSort(arr, low, pivot - 1)
-    quickSort(arr, pivot + 1, high)
-  }
-  return arr
-}
-  
-const unsortedArray = [7, 0, 3, 2, 1, 9, 2]
-const lowIndex = 0
-const highIndex = unsortedArray.length - 1
+    
+    for (i = low; i < high; i++) {
+      if (targetArray[i] < targetArray[high]) {
+        swap(targetArray, i, pivot)
+        pivot++
+      }
+    }
 
+    swap(targetArray, i, pivot)
+
+    quickSort(targetArray, low, pivot - 1)
+    quickSort(targetArray, pivot + 1, high)
+  }
+  
+  return targetArray
+}
+
+//the array to sort
+const unsortedArray = [7, 0, 2, 1, 9, 2]
+console.log('unsortedArray', unsortedArray)
+
+//set a lowIndex for the index of the first element
+const lowIndex = 0
+
+//set highIndex, for the index of the last element
+const highIndex = unsortedArray.length - 1
+//we have to set these as variables, because quicksort is a recursive function
+
+//pass in the unsorted array, lowIndex and highIndex to quickSort function
 const sorted = quickSort(unsortedArray, lowIndex, highIndex)
+
+//display sorted array
 console.log('sorted', sorted)
