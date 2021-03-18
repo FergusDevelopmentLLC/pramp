@@ -1,22 +1,24 @@
-let swapAtIndexes = (targetArray, i, j) => {
+const swapAtIndexes = (targetArray, i, j) => {
   let temp = targetArray[i]
   targetArray[i] = targetArray[j]
   targetArray[j] = temp
 }
 
-let partition = (arr, low, high) => {
-  let q = low, i;
+const partition = (arr, low, high) => {
+  let q = low, i
+  
   for (i = low; i < high; i++) {
     if (arr[i] < arr[high]) {
-      swapAtIndexes(arr, i, q);
-      q++;
+      swapAtIndexes(arr, i, q)
+      q++
     }
   }
+
   swapAtIndexes(arr, i, q)
   return q
 }
 
-let quickSort = (arr, low, high) => {
+const quickSort = (arr, low, high) => {
   if (low < high) {
     let pivot = partition(arr, low, high)
     quickSort(arr, low, pivot - 1)
