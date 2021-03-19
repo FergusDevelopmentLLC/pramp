@@ -19,7 +19,7 @@ pivot = 0
 
     i = 3
     pivot = 1
-    1 is less than 7
+    is 1 less than 2
       swap([0, 7, 2, 1, 9, 2], 3, 1)
       target: [0, 1, 2, 7, 9, 2]
 
@@ -29,6 +29,8 @@ pivot = 0
 
     i = 5
     pivot = 2
+    is 2 < 2
+
     line 22: swap([0, 1, 2, 7, 9, 2], 5, 2)
     target: [0, 1, 2, 7, 9, 2]
     
@@ -40,11 +42,12 @@ pivot = 0
 
     line 24: quickSort([0, 1, 2, 7, 9, 2], 0, 2)
     0 is less than 2
-      0 is less than 2
-        swap([0, 1, 2, 7, 9, 2], 5, 2)
-        target: [0, 1, 2, 7, 9, 2]
-        pivot = 4
-        i = 6
+      i = 0
+      pivot = 2 
+      swap([0, 1, 2, 7, 9, 2], 0, 2)
+      target: [0, 1, 2, 7, 9, 2]
+      pivot = 4
+      i = 6
         6 > 5 (line 13)
         
     line 25: quickSort([0, 1, 2, 7, 9, 2], 5, 4)

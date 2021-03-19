@@ -4,7 +4,9 @@ const quickSort = (targetArray, low, high) => {
     let temp = targetArray[i]
     targetArray[i] = targetArray[pivot]
     targetArray[pivot] = temp
-    console.log('targetArray', targetArray)
+    //console.log('i', i)
+    //console.log('pivot', pivot)
+    //console.log('targetArray', targetArray)
   }
 
   let pivot = low
@@ -18,8 +20,13 @@ const quickSort = (targetArray, low, high) => {
         pivot++
       }
     }
-
+    console.log('i-', i)
+    console.log('pivot-', pivot)
     swap(targetArray, i, pivot)
+    //console.log('targetArray', targetArray)
+    
+    // console.log('low', low)
+    // console.log('pivot - 1', pivot - 1)
 
     quickSort(targetArray, low, pivot - 1)
     quickSort(targetArray, pivot + 1, high)
